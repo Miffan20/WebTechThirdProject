@@ -30,29 +30,6 @@ class HomeController extends Controller
         */
     }
 
-    public function customRegistration(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
-
-        $data = $request->all();
-        $check = $this->create($data);
-
-        return redirect("dashboard")->withSuccess('You have signed-in');
-    }
-
-    public function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
-    }
-
     public function register()
     {
         return view('register');
@@ -65,8 +42,28 @@ class HomeController extends Controller
         | Task 3 Guest, step 5. You should implement this method as instructed
         |-----------------------------------------------------------------------
         */
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
 
+        $data = $request->all();
+        $check = $this->create($data);
+
+        return redirect('/')->withSuccess('You have signed-in');
     }
+
+    public function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password'])
+
+        ]);
+    }
+
 
     public function logout()
     {
