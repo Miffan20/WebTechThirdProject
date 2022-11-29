@@ -13,7 +13,7 @@
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('imgs/paw.svg') }}" alt="" class="me-2" style="height: 24px"/>
-            <span>{Name's} Pet Shelter</span>
+            <span>YaBois Pet Shelter</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
                 <!-- Guest, Task 1 Authorization, elements should appear for guest users only -->
                     <li class="nav-item">
                         <!-- Task 3 Guest, step 2: add correct link in href -->
-                        <a class="nav-link register-link" href="">Register</a>
+                        <a class="nav-link register-link" href="{{ route('register') }}">Register</a>
                     </li>
                     <li class="nav-item">
                         <!-- Task 4 Guest, step 2: add correct link in href -->
