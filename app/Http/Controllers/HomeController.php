@@ -45,23 +45,20 @@ class HomeController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required|min:4',
         ]);
 
         $data = $request->all();
-        $check = $this->create($data);
 
-        return redirect('/')->withSuccess('You have signed-in');
-    }
-
-    public function create(array $data)
-    {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
-
         ]);
+
+        Auth::login($user);
+
+        return redirect('/');
     }
 
 
