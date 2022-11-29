@@ -28,6 +28,19 @@ class HomeController extends Controller
         | Task 4 Guest, step 5. You should implement this method as instructed
         |-----------------------------------------------------------------------
         */
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/')
+                ->withSuccess('Signed in');
+        }
+
+        return redirect("login")->withSuccess('Login details are not valid');
+
     }
 
     public function register()

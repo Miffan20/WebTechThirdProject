@@ -38,7 +38,7 @@
                     </li>
                     <li class="nav-item">
                         <!-- Task 4 Guest, step 2: add correct link in href -->
-                        <a class="nav-link login-link" href="">Login</a>
+                        <a class="nav-link login-link" href="{{route('login')}}">Login</a>
                     </li>
                 <!-- Guest, Task 1 Authorization-->
 
