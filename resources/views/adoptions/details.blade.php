@@ -13,8 +13,10 @@
                         <p class="card-text">{{ $adoption->description }}</p>
                         <!-- Task 5 User, step 4: this form should not appear if the pet was already adopted -->
                         @auth
-                        <form>
-                            <button type="submit" class="pet-adopt">Adopt Me!</button>
+                        <form action="{{route('adoptions.adopt', $adoption)}}" method="POST">
+
+                            @csrf
+                            <button type="submit" class="pet-adopt" >Adopt Me!</button>
                         </form>
                         @endauth
                         @if($adoption->adopted_by != null)
