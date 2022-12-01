@@ -17,7 +17,7 @@ class Adoption extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'image_path'];
+    protected $fillable = ['name', 'description', 'image_path', 'adopted_by'];
 
     public function scopeUnadopted(Builder $query)
     {

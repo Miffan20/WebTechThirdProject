@@ -25,8 +25,8 @@ class AdoptionController extends Controller
         | This is done using the adopted_by field from the user column in the database.
         |-----------------------------------------------------------------------
         */
-        if (Auth::user()) {
-            $adoption ->update(['adopted_by' => Auth::id()]);
+        if (Auth::user()){
+            $adoption -> update(['adopted_by' => Auth::id()]);
         }
 
         return redirect('/')->with('success', "Pet $adoption->name adopted successfully");
