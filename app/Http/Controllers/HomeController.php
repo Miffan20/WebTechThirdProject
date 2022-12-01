@@ -35,8 +35,7 @@ class HomeController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/')
-                ->withSuccess('Signed in');
+            return redirect()->intended('/');
         }
 
         return redirect("login")->withSuccess('Login details are not valid');

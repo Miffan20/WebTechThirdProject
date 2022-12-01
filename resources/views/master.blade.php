@@ -31,6 +31,7 @@
                 <!-- Task 1 Authorization-->
             </ul>
             <ul class="navbar-nav d-flex">
+                @guest
                 <!-- Guest, Task 1 Authorization, elements should appear for guest users only -->
                     <li class="nav-item">
                         <!-- Task 3 Guest, step 2: add correct link in href -->
@@ -41,19 +42,18 @@
                         <a class="nav-link login-link" href="{{route('login')}}">Login</a>
                     </li>
                 <!-- Guest, Task 1 Authorization-->
-
+                @else
                 <!-- Task 1 Authorization, elements should appear for logged users only -->
                     <!-- Task 1 User, step 1: add name of logged user-->
                     <span class="navbar-text text-black me-4 user-name">
-                        @if(Auth::check())
                         <a>{{ Auth::user()->name }}</a>
-                        @endif
                     </span>
                     <li class="nav-item">
                         <!-- Task 2 User, step 3: add correct link-->
                         <a class="nav-link logout-link" href="{{ route('logout') }}">Log out</a>
                     </li>
                 <!-- Task 1 Authorization-->
+                @endguest
             </ul>
         </div>
     </div>
