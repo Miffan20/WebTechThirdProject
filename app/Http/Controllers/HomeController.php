@@ -75,12 +75,16 @@ class HomeController extends Controller
     }
 
 
-    public function logout()
+    public function logout(Request $request)
     {
         /*
         |-----------------------------------------------------------------------
         | Task 2 User, step 3. You should implement this method as instructed
         |-----------------------------------------------------------------------
         */
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }
