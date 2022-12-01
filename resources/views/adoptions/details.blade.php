@@ -14,10 +14,11 @@
                         <!-- Task 5 User, step 4: this form should not appear if the pet was already adopted -->
                         @auth
                         <form method="POST" action="{{ route('adoptions.adopt', $adoption) }}" >
+                            @if(!$adoption->adopted_by == auth()->id())
                             @csrf
                             <button type="submit" class="pet-adopt">Adopt Me!</button>
+                            @endif
                         </form>
-                        @endauth
                         @if($adoption->adopted_by != null)
                             @if($adoption->adopted_by == auth()->id())
                                 <p class="text-success">This pet has been adopted by you :)</p>
@@ -25,6 +26,7 @@
                                 <p class="text-danger">This pet has already been adopted.</p>
                             @endif
                         @endif
+                        @endauth
                     </div>
                 </div>
             </div>

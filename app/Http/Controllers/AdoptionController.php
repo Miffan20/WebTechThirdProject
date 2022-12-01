@@ -42,7 +42,7 @@ class AdoptionController extends Controller
         |-----------------------------------------------------------------------
         */
 
-        $adoptions = []; // replace me
+        $adoptions = DB::table('adoptions')->where('adopted_by', Auth::id())->get();
 
         return view('adoptions.list', ['adoptions' => $adoptions, 'header' => 'My Adoptions']);
     }
