@@ -24,7 +24,8 @@ class AdoptionController extends Controller
         |-----------------------------------------------------------------------
         */
 
-        return redirect()->home()->with('success', "Pet $adoption->name adopted successfully");
+
+        return redirect('/')->with('success', "Pet $adoption->name adopted successfully");
     }
 
 

@@ -10,8 +10,13 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $adoption->name }}</h5>
-                        <p class="card-text">{{ $adoption->description }}</p>d
+                        <p class="card-text">{{ $adoption->description }}</p>
                         <!-- Task 5 User, step 4: this form should not appear if the pet was already adopted -->
+                        @auth
+                        <form>
+                            <button type="submit" class="pet-adopt">Adopt Me!</button>
+                        </form>
+                        @endauth
                         @if($adoption->adopted_by != null)
                             @if($adoption->adopted_by == auth()->id())
                                 <p class="text-success">This pet has been adopted by you :)</p>
